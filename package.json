@@ -1,14 +1,20 @@
 {
-  "name": "hello-world-netlify-functions--parcel2",
-  "version": "0.0.1",
-  "description": "Test of Netlify functions with parcel2",
-  "main": "index.js",
-  "repository": "https://github.com/Offirmo/hello-world-netlify-functions--parcel2.git",
-  "author": "Offirmo <offirmo.net@gmail.com> (https://www.offirmo.net/)",
-  "license": "Unlicense",
-  "private": true,
-  "devDependencies": {
-    "parcel": "^2.5.0",
-    "typescript": "^4.6.3"
-  }
+	"name": "hello-world-netlify-functions--parcel2",
+	"description": "Test of Netlify functions with parcel2",
+	"version": "0.0.1",
+	"author": "Offirmo <offirmo.net@gmail.com> (https://www.offirmo.net/)",
+	"private": true,
+
+	"main": "index.js",
+
+	"devDependencies": {
+		"@size-limit/file": "^7",
+		"@types/aws-lambda": "^8",
+		"parcel": "^2",
+		"size-limit": "^7",
+		"tslib": "^2",
+		"typescript": "^4",
+		"typescript-string-enums": "^1"
+	},
+	"repository": "https://github.com/Offirmo/hello-world-netlify-functions--parcel2.git"
 }
