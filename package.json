@@ -5,11 +5,64 @@
 	"author": "Offirmo <offirmo.net@gmail.com> (https://www.offirmo.net/)",
 	"private": true,
 
-	"main": "index.js",
 
+	"COMMENTS": {
+		"01": "dependencies: Netlify build only installs PROD dependencies, so make sure modules critical for scripts are included!"
+	},
+
+
+	"PARCEL-CONFIG--BEGIN": "",
+	"targets": {
+
+		"frontend": {
+			"context": "browser",
+			"engines": {
+				"browsers": "Chrome 100"
+			},
+			"outputFormat": "esmodule",
+			"source": "src/web/index.html"
+		},
+
+		"backend--functions--hello-world": {
+			"context": "node",
+			"engines": {
+				"node": ">=16"
+			},
+			"isLibrary": true,
+			"outputFormat": "esmodule",
+			"source": "src/functions/hello-world.ts",
+			"includeNodeModules": {},
+			"distDir": "./xyz/functions",
+			"sourceMap": false
+		},
+
+		"backend--functions--hello-world-alt": {
+			"context": "node",
+			"engines": {
+				"node": ">=16"
+			},
+			"isLibrary": true,
+			"outputFormat": "esmodule",
+			"source": "src/functions/hello-world-alt.ts",
+			"includeNodeModules": {},
+			"distDir": "./xyz/functions",
+			"sourceMap": false
+		}
+	},
+	"PARCEL-CONFIG--END": "",
+
+
+	"scripts": {
+		"clean": "rm -rf .parcel-cache ./xyz/functions/*",
+		"_parcel--watch": "parcel watch",
+		"_parcel--serve": "parcel --lazy",
+		"build": "parcel build"
+	},
 	"devDependencies": {
+		"@parcel/transformer-typescript-tsc": "^2",
 		"@size-limit/file": "^7",
 		"@types/aws-lambda": "^8",
+		"npm-run-all": "^4",
 		"parcel": "^2",
 		"size-limit": "^7",
 		"tslib": "^2",

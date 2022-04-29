@@ -9,8 +9,6 @@ node_modules
 ### re-generable or auto-generated
 **/dist/src.es2021/
 **/dist/src.es2021.cjs/
-**/dist/src.es2021/
-**/dist/src.es2021.cjs/
 ## intentionally unused
 package-lock.json
 

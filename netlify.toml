@@ -2,23 +2,26 @@
 ## - https://www.netlify.com/docs/netlify-toml-reference/
 ## - https://docs.netlify.com/configure-builds/file-based-configuration/
 
+## current image 2022/04/29
+## [https://github.com/netlify/build-image/blob/focal/included_software.md](update marker)
+
 
 ## Settings in the [build] context are global and are applied to all contexts
 ## unless otherwise overridden by more specific contexts.
 [build]
 	## Directory with the serverless Lambda functions to deploy to AWS.
 	## https://www.netlify.com/docs/functions/#tools-for-building-javascript-functions
-	functions = "./B-apps--support/online-adventur.es/functions/functions"
+	functions = "./xyz/functions"
 	command = "echo $TEST_ENV_VAR"
 	[build.processing]
 		skip_processing = true
 	[build.environment]
 		TEST_ENV_VAR = "build"
 		## https://docs.netlify.com/configure-builds/manage-dependencies/#yarn
-		## won't use the latest, such a pain (seen 2020/11)
+		## config needed since we use a complex setup
 		## can't use semver, such a pain
 		## [](update marker)
-		YARN_VERSION = "1.22.15"
+		YARN_VERSION = "1.22.18"
 		## https://www.netlify.com/docs/functions/#javascript-runtime-settings
 		## https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
 		## NOTE: this doesn't seem to take effect. Unsure about which runtime is selected
@@ -51,11 +54,5 @@
 
 ## Redirects from what the browser requests to what we serve
 ## https://www.netlify.com/docs/redirects/
-[[redirects]]
-	from = "/C-apps--clients/the-boring-rpg/client--browser/dist/*"
-	to = "/C-apps--clients/the-boring-rpg/client--browser/dist/"
-	# The default HTTP status code is 301, but you can define a different one.
-	status = 200
-
 
 #[[headers]]
