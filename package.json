@@ -32,7 +32,7 @@
 			"outputFormat": "commonjs",
 			"source": "src/functions/hello-world.mts",
 			"includeNodeModules": {},
-			"distDir": "./xyz/functions",
+			"distDir": "./dist/functions",
 			"sourceMap": false
 		},
 
@@ -45,7 +45,7 @@
 			"outputFormat": "commonjs",
 			"source": "src/functions/hello-world-alt.mts",
 			"includeNodeModules": {},
-			"distDir": "./xyz/functions",
+			"distDir": "./dist/functions",
 			"sourceMap": false
 		}
 	},
@@ -53,23 +53,25 @@
 
 
 	"scripts": {
-		"clean": "rm -rf .parcel-cache ./xyz/functions/*",
+		"clean": "rm -rf .parcel-cache dist",
 
 		"_parcel--watch": "parcel watch",
 		"_parcel--serve": "parcel serve --lazy --target frontend --port 9000",
-
 		"_netlify--functions--serve": "netlify functions:serve",
 
 		"_dev--frontend": "run-p _parcel--serve",
 		"_dev--backend": "run-p _parcel--watch _netlify--functions--serve",
 
+		"_parcel--build": "parcel build",
+
 		"dev": "FORCE_COLOR=1 npm-run-all --print-label clean --parallel _dev--backend _dev--frontend",
-		"build": "parcel build"
+		"build": "run-s  clean _parcel--build"
 	},
 	"devDependencies": {
 		"@parcel/transformer-typescript-tsc": "^2",
 		"@size-limit/file": "^7",
 		"@types/aws-lambda": "^8",
+		"lodash": "^4",
 		"npm-run-all": "^4",
 		"parcel": "^2",
 		"size-limit": "^7",
