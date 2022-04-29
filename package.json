@@ -29,8 +29,8 @@
 				"node": ">=16"
 			},
 			"isLibrary": true,
-			"outputFormat": "esmodule",
-			"source": "src/functions/hello-world.ts",
+			"outputFormat": "commonjs",
+			"source": "src/functions/hello-world.mts",
 			"includeNodeModules": {},
 			"distDir": "./xyz/functions",
 			"sourceMap": false
@@ -42,8 +42,8 @@
 				"node": ">=16"
 			},
 			"isLibrary": true,
-			"outputFormat": "esmodule",
-			"source": "src/functions/hello-world-alt.ts",
+			"outputFormat": "commonjs",
+			"source": "src/functions/hello-world-alt.mts",
 			"includeNodeModules": {},
 			"distDir": "./xyz/functions",
 			"sourceMap": false
@@ -54,8 +54,12 @@
 
 	"scripts": {
 		"clean": "rm -rf .parcel-cache ./xyz/functions/*",
+
 		"_parcel--watch": "parcel watch",
 		"_parcel--serve": "parcel --lazy",
+
+		"_serve_functions": "netlify functions:serve",
+
 		"build": "parcel build"
 	},
 	"devDependencies": {
