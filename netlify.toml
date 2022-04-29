@@ -30,6 +30,10 @@
 		## [](update marker)
 		#AWS_LAMBDA_JS_RUNTIME = "nodejs12.x"
 
+[dev]
+	framework = "#custom"
+	command = "yarn _netlify-dev" # Command to start your dev server
+	targetPort = 1234
 
 ## 2020/11 not seen those env vars in FUNCTIONS, they are for build only (override works)
 ## Production context: All deploys from the main
@@ -58,3 +62,6 @@
 ## https://www.netlify.com/docs/redirects/
 
 #[[headers]]
+
+## https://docs.netlify.com/netlify-labs/experimental-features/edge-functions/get-started/
+#[[edge_functions]]

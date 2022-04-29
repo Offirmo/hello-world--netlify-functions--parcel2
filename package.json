@@ -47,10 +47,12 @@
 		"_dev--frontend": "run-p _parcel--serve",
 		"_dev--backend": "run-p _parcel--watch _netlify--functions--serve",
 
+		"_dev--netlify": "netlify dev",
 		"_parcel--build--frontend": "parcel build --target backend   './src/functions/*.mts'",
-		"_parcel--build--backend":  "parcel build --target frontend  'src/web/*.html'",
-
-		"dev": "FORCE_COLOR=1 npm-run-all --print-label clean --parallel _dev--backend _dev--frontend",
+		"_parcel--build--backend": "parcel build --target frontend  'src/web/*.html'",
+		"_netlify-dev": "FORCE_COLOR=1 npm-run-all --print-label clean --parallel _parcel--serve _parcel--watch",
+		"dev": "FORCE_COLOR=1 run-s --print-label clean _dev--netlify",
+		"dev-alt": "FORCE_COLOR=1 npm-run-all --print-label clean --parallel _dev--backend _dev--frontend",
 		"build": "run-s  clean _parcel--build--backend _parcel--build--frontend"
 	},
 	"devDependencies": {
@@ -58,6 +60,7 @@
 		"@size-limit/file": "^7",
 		"@types/aws-lambda": "^8",
 		"lodash": "^4",
+		"netlify-cli": "^10.1.0",
 		"npm-run-all": "^4",
 		"parcel": "^2",
 		"size-limit": "^7",
