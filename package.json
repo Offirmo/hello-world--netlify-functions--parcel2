@@ -56,10 +56,14 @@
 		"clean": "rm -rf .parcel-cache ./xyz/functions/*",
 
 		"_parcel--watch": "parcel watch",
-		"_parcel--serve": "parcel --lazy",
+		"_parcel--serve": "parcel serve --lazy --target frontend --port 9000",
 
-		"_serve_functions": "netlify functions:serve",
+		"_netlify--functions--serve": "netlify functions:serve",
 
+		"_dev--frontend": "run-p _parcel--serve",
+		"_dev--backend": "run-p _parcel--watch _netlify--functions--serve",
+
+		"dev": "FORCE_COLOR=1 npm-run-all --print-label clean --parallel _dev--backend _dev--frontend",
 		"build": "parcel build"
 	},
 	"devDependencies": {
