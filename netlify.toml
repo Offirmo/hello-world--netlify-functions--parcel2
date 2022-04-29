@@ -9,9 +9,11 @@
 ## Settings in the [build] context are global and are applied to all contexts
 ## unless otherwise overridden by more specific contexts.
 [build]
+	## Directory with the public files to serve
+	publish = "./dist/web/"
 	## Directory with the serverless Lambda functions to deploy to AWS.
 	## https://www.netlify.com/docs/functions/#tools-for-building-javascript-functions
-	functions = "./dist/functions"
+	functions = "./dist/functions/"
 	command = "echo $TEST_ENV_VAR"
 	[build.processing]
 		skip_processing = true

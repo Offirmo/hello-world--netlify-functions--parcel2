@@ -1,3 +1,4 @@
+import { capitalize } from 'lodash'
 
 import {
 	APIGatewayEvent,
@@ -13,7 +14,7 @@ const handler: NetlifyHandler = async (
 	event: APIGatewayEvent,
 	badly_typed_context: Context,
 ): Promise<Response> => {
-	const msg = `Hello from netlify 2!`
+	const msg = `Hello from ${capitalize('netlify alt')}!`
 	console.log('(console.log)', msg)
 	console.info('(console.info)', msg)
 	console.warn('(console.warn)', msg)

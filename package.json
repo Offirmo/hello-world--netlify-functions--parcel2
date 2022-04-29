@@ -19,31 +19,16 @@
 			"engines": {
 				"browsers": "Chrome 100"
 			},
-			"outputFormat": "esmodule",
-			"source": "src/web/index.html"
+			"distDir": "./dist/public"
 		},
 
-		"backend--functions--hello-world": {
+		"backend": {
 			"context": "node",
 			"engines": {
 				"node": ">=16"
 			},
 			"isLibrary": true,
 			"outputFormat": "commonjs",
-			"source": "src/functions/hello-world.mts",
-			"includeNodeModules": {},
-			"distDir": "./dist/functions",
-			"sourceMap": false
-		},
-
-		"backend--functions--hello-world-alt": {
-			"context": "node",
-			"engines": {
-				"node": ">=16"
-			},
-			"isLibrary": true,
-			"outputFormat": "commonjs",
-			"source": "src/functions/hello-world-alt.mts",
 			"includeNodeModules": {},
 			"distDir": "./dist/functions",
 			"sourceMap": false
@@ -55,17 +40,18 @@
 	"scripts": {
 		"clean": "rm -rf .parcel-cache dist",
 
-		"_parcel--watch": "parcel watch",
-		"_parcel--serve": "parcel serve --lazy --target frontend --port 9000",
+		"_parcel--watch": "parcel watch --no-hmr --target backend  './src/functions/*.mts'",
+		"_parcel--serve": "parcel serve --lazy  --target frontend  'src/web/*.html'",
 		"_netlify--functions--serve": "netlify functions:serve",
 
 		"_dev--frontend": "run-p _parcel--serve",
 		"_dev--backend": "run-p _parcel--watch _netlify--functions--serve",
 
-		"_parcel--build": "parcel build",
+		"_parcel--build--frontend": "parcel build --target backend   './src/functions/*.mts'",
+		"_parcel--build--backend":  "parcel build --target frontend  'src/web/*.html'",
 
 		"dev": "FORCE_COLOR=1 npm-run-all --print-label clean --parallel _dev--backend _dev--frontend",
-		"build": "run-s  clean _parcel--build"
+		"build": "run-s  clean _parcel--build--backend _parcel--build--frontend"
 	},
 	"devDependencies": {
 		"@parcel/transformer-typescript-tsc": "^2",
