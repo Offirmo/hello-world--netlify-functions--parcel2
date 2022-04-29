@@ -10,7 +10,7 @@
 ## unless otherwise overridden by more specific contexts.
 [build]
 	## Directory with the public files to serve
-	publish = "./dist/web/"
+	publish = "./dist/public/"
 	## Directory with the serverless Lambda functions to deploy to AWS.
 	## https://www.netlify.com/docs/functions/#tools-for-building-javascript-functions
 	functions = "./dist/functions/"
